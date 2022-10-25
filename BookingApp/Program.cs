@@ -1,5 +1,6 @@
 global using BookingApp.Entities;
 using BookingApp.Services;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,8 +10,17 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext <AccomodationDbContext>();
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 builder.Services.AddScoped<IAccomodationService, AccomodationService>();
+builder.Services.AddCors();
+
+
+
 
 var app = builder.Build();
+app.UseCors(builder => builder
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader());
+
 
 app.MapGet("/", () => "Hello World!");
 // Configure the HTTP request pipeline.
