@@ -13,14 +13,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
-  /*
-    const {data, loading, error} = useFetch("api/accomodation")
-    console.log(data);
-    */
+    
 
   return (
-
+  
     <BrowserRouter>
+
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/accomodations" element={<List/>}/>

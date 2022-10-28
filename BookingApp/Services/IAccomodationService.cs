@@ -6,5 +6,7 @@ namespace BookingApp.Services
     {
         IEnumerable<AccomodationDto> GetAll();
         AccomodationDto GetById(int id);
+
+        AccomodationDto GetByName(string name);
     }
 }

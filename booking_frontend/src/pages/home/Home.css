@@ -1,122 +1,17 @@
-img {
-    max-width: 100%;
-}
-
-.picture-container {
-    position: relative;
-    color: white;
-    justify-content: center;
-}
-
-.bigtext {
-    position: absolute;
-    margin: auto;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 34px;
-    font-weight: 400;
-}
-
-.smalltext {
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 25px;
-    font-weight: 330;
-}
-
-.containerSearch {
-    height: 60px;
-    background-color: white;
-    border: 4px solid lightblue;
+.homeContainer
+{
+    margin-top: 50px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-around;
-    padding: 10px 0px;
-    border-radius: 10px;
-    position: relative;
-    bottom: 30px;
-    width: 100%;
-    margin: auto;
-    max-width: 1024px;
+    gap:30px;
 }
 
-.containerSearchItem {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.homeTitle
+{
+    width:1024px;
+    font-size: 20px !important;
+    font-weight: 800 !important;
 
 }
 
-.containerSearchInput {
-    border: none;
-    outline: none;
-
-
-}
-
-.containerSearchText {
-    color: lightgrey;
-    cursor: pointer;
-
-
-}
-
-.cointainerIcon {
-    color: lightgrey;
-    margin-left: -22px;
-
-}
-
-.date {
-    position: absolute;
-    top: 52px;
-    margin-left: -34px;
-
-}
-
-.btn.btn-primary {
-    margin-right: -35px;
-    height: 52px;
-    width: 100px;
-}
-
-.options {
-    position: absolute;
-    top: 53px;
-    background-color:ghostwhite;
-    color: grey;
-    
-    border-radius: 5px;
-    -webkit-box-shadow: 7px 3px 36px 0px rgba(66, 68, 90, 1);
-    -moz-box-shadow: 7px 3px 36px 0px rgba(66, 68, 90, 1);
-    box-shadow: 7px 3px 36px 0px rgba(66, 68, 90, 1);
-}
-.optionItem {
-  width: 200px;
-  display: flex;
-  justify-content: space-between;
-margin: 10px;
-
-}
-.optionCounter {
-    width: 200px;
-    gap: 20px;
-    align-items: center;
-    font-size: 13px;
-    color: black;
-    
-  
-  }
-  
-.optionCounterButton
-  {
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    background-color: white;
-    margin-left:10px;
-    margin-right:10px;
-  }

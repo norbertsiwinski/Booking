@@ -33,6 +33,24 @@ namespace BookingApp.Services
             return result;
         }
 
+        public AccomodationDto GetByName(string name)
+        {
+
+            var accomodation = _dbContext
+              .Accomodations
+              .Include(r => r.Address)
+              .Include(r => r.Reservations)
+              .FirstOrDefault(r => r.Name == name);
+
+            if (accomodation is null)
+            {
+                return null;
+            }
+
+            var result = _mapper.Map<AccomodationDto>(accomodation);
+            return result;
+        }
+
         public IEnumerable<AccomodationDto> GetAll()
         {
             var accomodations = _dbContext

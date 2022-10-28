@@ -27,10 +27,24 @@ namespace BookingApp.Controllers
         }
 
 
-        [HttpGet("{id}")]
-        public ActionResult<AccomodationDto> Get([FromRoute] int id)
+        [HttpGet("id/{id}")]
+        public ActionResult<AccomodationDto> GetById([FromRoute] int id)
         {
             var accomodation = _accomodationService.GetById(id);
+
+            if (accomodation is null)
+            {
+                return NotFound();
+            }
+            return accomodation;
+
+        }
+
+
+        [HttpGet("name/{name}")]
+        public ActionResult<AccomodationDto> GetByName([FromRoute] string name)
+        {
+            var accomodation = _accomodationService.GetByName(name);
 
             if (accomodation is null)
             {
