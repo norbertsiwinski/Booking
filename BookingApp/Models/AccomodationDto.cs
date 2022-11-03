@@ -7,7 +7,7 @@
         public string Description { get; set; }
         public AccomodationTypes AccomodationType { get; set; }
         public int Place { get; set; }
-
+        public int DistanceToCenter { get; set; }
         public decimal Price { get; set; }
         public string ContantEmail { get; set; }
         public string ContantNumber { get; set; }

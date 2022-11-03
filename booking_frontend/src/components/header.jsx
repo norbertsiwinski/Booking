@@ -7,17 +7,16 @@ import { faHotel } from '@fortawesome/free-solid-svg-icons';
 import { DateRange } from 'react-date-range';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
-
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { format } from "date-fns";
-const picture = new URL("./wwe.jpg", import.meta.url);
+
 
 const Header = () => {
 
-    const {data, loading, error } = useFetch("api/accomodation");
+
     const [openDate, setOpenDate] = useState(false);
     const [date, setDate] = useState([
         {
@@ -26,21 +25,22 @@ const Header = () => {
             key: 'selection'
         }
     ]);
+    const [destination, setDestination] = useState("");
     const [openOptions, setOpenOptions] = useState(false);
-    const [openOAccomodation, setOpenAccomodation] = useState(false);
+    const [openAccomodation, setOpenAccomodation] = useState(false);
+    const [accomodation, setAccomodation] = useState(
+        {
+        hotel: false
+        });
     const [options, setOptions] = useState(
         {
             adult: 1
         });
-        const navigate = useNavigate();
-        const createPost = () => {
-            navigate('/accomodations',
-                {
-                    state: {
-                        data
-                    }
-                });
-        }
+    const navigate = useNavigate();
+    const handleSearch = () => {
+
+        navigate("/accomodations", { state: { destination, date, options, accomodation } });
+    };
 
 
     const handleOption = (name, operation) => {
@@ -53,21 +53,17 @@ const Header = () => {
     };
     return (
         <div>
-            <div class="picture-container">
-                <div class="centered">
-                    <div class="bigtext"> HOTELS, APARTMENTS, ROOMS AND MORE... </div>
-                    <div class="smalltext"> Look for rooms from all over the world</div>
-                </div>
-                <img src={picture} />
-            </div>
+    
 
             <div className="containerSearch">
                 <div className="containerSearchItem">
                     <FontAwesomeIcon icon={faBed} className="cointainerIcon" />
-                    <input 
+                    <input
+                        id="destinaton"
                         type="text"
                         placeholder="Where are you going?"
                         className="containerSearchInput"
+                        onChange={(e) => setDestination(e.target.value)}
                     />
                 </div>
                 <div className="containerSearchItem">
@@ -104,23 +100,21 @@ const Header = () => {
                 </div>
                 <div className="containerSearchItem">
                     <FontAwesomeIcon icon={faHotel} className="cointainerIcon" />
-                    <span onClick={() => setOpenAccomodation(!openOAccomodation)} className="containerSearchText">Accomodation Type</span>
-                    {openOAccomodation && <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
+                    <span onClick={() => setOpenAccomodation(!openAccomodation)} className="containerSearchText">Accomodation Type</span>
+                    {openAccomodation && <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" checked ="false" id="Hotel" />
                         <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
-                        <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
-                        <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
+                        <input class="form-check-input" type="checkbox" checked="false" id="Hotel" />
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox cxxcinput</label>
+
                     </div>
                     }
                 </div>
                 <div className="containerSearchItem">
-                  
-                    <button onClick={() => { createPost() }}type="button" class="btn btn-primary">Search</button>
-                   
-                    
+
+                    <button onClick={() => { handleSearch() }} type="button" class="btn btn-primary">Search</button>
+
+
                 </div>
             </div>
         </div>

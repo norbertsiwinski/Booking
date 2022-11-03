@@ -5,7 +5,7 @@ nav{
     padding-bottom: .5rem;
 }
 nav .navbar-collapse.collapse{
-    display: block;
+    display:flex;
 }
 
 nav .navbar-collapse{
@@ -24,6 +24,7 @@ nav .navbar-collapse{
     transition: all 0.15s ease-in-out 0s;
     font-weight: 300;
 }
+
 
 .navbar-brand.text-info
 {

@@ -4,6 +4,7 @@ import './Home.css';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import Header from '../../components/header';
+import Image from '../../components/image/image'
 import Featured from '../../components/featured';
 import PropertyList from '../../components/propertyList/propertyList';
 const Home = () => {
@@ -12,7 +13,9 @@ const Home = () => {
     return (
         <div>
             <MainNavbar />
+            <Image/>
             <Header />
+            
             <div className="homeContainer">
                 <Featured />
                 <h1 className="homeTitle">Search by property type</h1>

@@ -1,0 +1,9 @@
+img {
+    max-width: 100%;
+}
+
+.picture-container {
+    position: relative;
+    color: white;
+    justify-content: center;
+}

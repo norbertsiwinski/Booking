@@ -1,0 +1,69 @@
+.listContainer {
+        margin-top: 80px;
+    
+    align-items: center;
+    justify-content: center;
+}
+
+.listResult {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 1024px;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    
+    width: 100%;
+}
+
+.listSearch {
+    margin: auto;
+    align-items: center;
+    max-width: 1024px;
+    position: relative;
+    margin-top: -15px;
+    margin-left: 40%;
+}
+
+
+.lsTitle {
+    font-size: 18px;
+    color: white;
+}
+
+.lsItem {
+    float: left;
+    align-items: center;
+    display: inline;
+    color: white;
+    gap: 100px;
+    max-width: 1024px;
+    justify-content: center;
+    width: 150px;
+}
+
+.back {
+    height: 145px;
+    background-color: #20274d;
+    position: relative;
+    margin-bottom: -90px;
+    top: 10px;
+
+}
+
+.priceBox {
+    color: black;
+    height: 40px;
+    width: 140px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: lightgray;
+    opacity: 1;
+    /* Firefox */
+}
