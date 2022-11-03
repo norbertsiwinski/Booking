@@ -19,7 +19,8 @@ namespace BookingApp.Controllers
             _accomodationService = accomodationService;
         }
 
-        public ActionResult<IEnumerable<AccomodationDto>> GetAll()
+        public ActionResult<IEnumerable<AccomodationDto>> GetAll(
+            )
         {
             var accomodationsDtos = _accomodationService.GetAll();
 
