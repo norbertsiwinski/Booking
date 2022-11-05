@@ -10,6 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext <AccomodationDbContext>();
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 builder.Services.AddScoped<IAccomodationService, AccomodationService>();
+builder.Services.AddScoped<IReservationService, ReservationService>();
 builder.Services.AddCors();
 
 

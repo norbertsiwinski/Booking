@@ -8,5 +8,7 @@ namespace BookingApp.Services
         AccomodationDto GetById(int id);
 
         AccomodationDto GetByName(string name);
+
+        Object GetReservationsDates(int id);
     }
 }

@@ -12,6 +12,8 @@ import useFetch from '../hooks/useFetch';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { format } from "date-fns";
+import Form from 'react-bootstrap/Form';
+import { FormCheck } from 'react-bootstrap';
 
 
 const Header = () => {
@@ -28,10 +30,7 @@ const Header = () => {
     const [destination, setDestination] = useState("");
     const [openOptions, setOpenOptions] = useState(false);
     const [openAccomodation, setOpenAccomodation] = useState(false);
-    const [accomodation, setAccomodation] = useState(
-        {
-        hotel: false
-        });
+
     const [options, setOptions] = useState(
         {
             adult: 1
@@ -51,10 +50,29 @@ const Header = () => {
             };
         });
     };
+
+
+    const handleChange = (name) => {
+        setChecked((prev) => {
+            return {
+                ...prev,
+                [name]: !accomodation[name]
+            };
+        });
+    };
+
+    const [accomodation, setChecked] = useState(
+        {
+            hotel: false,
+            apartament: false,
+            guesthouse: false
+
+        }
+    )
+
     return (
         <div>
-    
-
+            {console.log(accomodation)}
             <div className="containerSearch">
                 <div className="containerSearchItem">
                     <FontAwesomeIcon icon={faBed} className="cointainerIcon" />
@@ -101,11 +119,10 @@ const Header = () => {
                 <div className="containerSearchItem">
                     <FontAwesomeIcon icon={faHotel} className="cointainerIcon" />
                     <span onClick={() => setOpenAccomodation(!openAccomodation)} className="containerSearchText">Accomodation Type</span>
-                    {openAccomodation && <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" checked ="false" id="Hotel" />
-                        <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
-                        <input class="form-check-input" type="checkbox" checked="false" id="Hotel" />
-                        <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox cxxcinput</label>
+                    {openAccomodation && <div className='checkboxes'>
+                        <FormCheck className="checkbox" id="flexCheckDefault" label="Hotel" onChange={() => handleChange("hotel")} value={accomodation.hotel} />
+                        <FormCheck className="checkbox" id="checkbox" label="Apartament" onChange={() => handleChange("apartament")} value={accomodation.apartament} />
+                        <FormCheck className="checkbox" id="checkbox" label="Guest House" onChange={() => handleChange("guesthouse")} value={accomodation.guesthouse} />
 
                     </div>
                     }

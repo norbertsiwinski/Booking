@@ -54,5 +54,17 @@ namespace BookingApp.Controllers
             return accomodation;
 
         }
+
+        [HttpGet("{id}/reservation")]
+        public Object GetReservationsDates(int id)
+        {
+            var accomodation = _accomodationService.GetReservationsDates(id);
+
+            if (accomodation is null)
+            {
+                return NotFound("no reservations");
+            }
+            return accomodation;
+        }
     }
 }

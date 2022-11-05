@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BookingApp.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace BookingApp.Services
 {
@@ -60,6 +61,21 @@ namespace BookingApp.Services
                .ToList();
 
             var result = _mapper.Map<List<AccomodationDto>>(accomodations);
+
+            return result;
+        }
+
+        public Object GetReservationsDates(int id)
+        {
+
+            var acoomodation = GetById(id);
+
+           if (acoomodation.Reservations.Count == 0)
+            {
+                return null;
+            }
+
+            var result = acoomodation.Reservations;
 
             return result;
         }

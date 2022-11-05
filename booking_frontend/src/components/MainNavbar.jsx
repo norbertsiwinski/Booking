@@ -15,7 +15,6 @@ const MainNavbar = () => {
                     </li>
                 </ul>
             </div>
-
     </nav>
 )
 }
