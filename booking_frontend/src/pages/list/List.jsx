@@ -18,15 +18,23 @@ const List = () => {
     // const [accomodation, setAccomodation] = useState(state.accomodation)
 
 
-    
-
-    const { data, loading, error } = useFetch("http://localhost:5027/api/accomodation/name/" + state.destination);
 
 
+    const { data, loading, error } = useFetch("http://localhost:5027/api/accomodation");
+
+    const search = (data) => {
+
+        let filtred = data.filter((item) =>
+            item.city.includes(state.destination) &&
+            //!item.date.includes(state.date) &&
+            item.place >= state.options.adult)
+
+        return filtred;
+
+    }
     return (
         <div>
-            {console.log(data.id)}
-          
+
 
 
             <MainNavbar />
@@ -47,14 +55,13 @@ const List = () => {
             </div>
             <div className="listContainer">
                 <div className="listResult">
-                    <SearchItem />
-                    <SearchItem />
-                    <SearchItem />
-                    <SearchItem />
-                    <SearchItem />
-                    <SearchItem />
+                    {loading ? "loading" : <>
+                        {search(data).map(item => (
+                            < SearchItem item={item} state={state} key={item.id} />
+                        ))
+                        }
+                    </>}
                 </div>
-
             </div>
         </div >
     )
