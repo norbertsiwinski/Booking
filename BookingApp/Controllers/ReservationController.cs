@@ -30,6 +30,13 @@ namespace BookingApp.Controllers
             return Ok(reservationDtos);
         }
 
+        [HttpPost]
+        public ActionResult CreateReservation([FromBody] CreateReservationDto dto)
+        {
+            var id = _reservationService.CreateReservation(dto);
+            return Created($"/api/reservation/{id}", null);
+        }
+
     }
 
 }

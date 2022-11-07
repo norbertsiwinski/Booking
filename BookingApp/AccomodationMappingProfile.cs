@@ -14,6 +14,8 @@ namespace BookingApp
                 .ForMember(m => m.PostalCode, c => c.MapFrom(s => s.Address.PostalCode));
 
             CreateMap<Reservation, ReservationDto>();
+
+            CreateMap<CreateReservationDto, Reservation>();
         }
     }
 }

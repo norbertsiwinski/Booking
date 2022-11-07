@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BookingApp.Models;
+using BookingApp.Services;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -9,13 +10,14 @@ namespace BookingApp.Services
     {
         private readonly AccomodationDbContext _dbContext;
         private readonly IMapper _mapper;
+        private readonly IAccomodationService _service;
 
-
-
-        public ReservationService(AccomodationDbContext dbContext, IMapper mapper)
+        public ReservationService(AccomodationDbContext dbContext, IMapper mapper, IAccomodationService service)
         {
             _dbContext = dbContext;
             _mapper = mapper;
+            _service = service;
+
         }
 
         public ReservationDto GetById(int id)
@@ -33,6 +35,13 @@ namespace BookingApp.Services
 
         }
 
+        public int CreateReservation(CreateReservationDto dto)
+        {
+            var reservation = _mapper.Map<Reservation>(dto);
+            _dbContext.Reservations.Add(reservation);
+            _dbContext.SaveChanges();
+            return reservation.Id;
+        }
 
     }
 }

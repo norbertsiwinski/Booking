@@ -3,40 +3,65 @@ import { useLocation } from 'react-router-dom';
 import useFetch from '../../hooks/useFetch';
 import MainNavbar from '../../components/MainNavbar';
 import "./List.css";
-import { useState } from 'react';
 import { format } from "date-fns";
 import Header from '../../components/header';
 import { text } from '@fortawesome/fontawesome-svg-core';
 import SearchItem from '../../components/searchItem/SearchItem';
+import { useEffect, useState } from "react"
+import axios from "axios";
+
 const List = () => {
 
     const { state } = useLocation();
-
     const [destination, setDestination] = useState(state.destination)
     const [date, setDate] = useState(state.date);
     // const [options, setOptions] = useState(state.options)
     // const [accomodation, setAccomodation] = useState(state.accomodation)
 
 
-
+    const useFetched = url => {
+        const [dates, setData] = useState([]);
+        const [error, setError] = useState(false);
+        useEffect(() => {
+            const fetchData = async () => {
+                try {
+                    const res = await axios.get(url);
+                    setData(res.data);
+                } catch (err) {
+    
+                    setError(err);
+                }
+            };
+            fetchData();
+        }, [url]);
+        return { dates, error }
+    };
 
     const { data, loading, error } = useFetch("http://localhost:5027/api/accomodation");
 
-    const search = (data) => {
 
+
+    const Search = (data) => {
         let filtred = data.filter((item) =>
             item.city.includes(state.destination) &&
-            //!item.date.includes(state.date) &&
-            item.place >= state.options.adult)
-
+            item.place >= state.options.adult &&
+            item.reservations.filter((res) => 
+            !(((new Date(res.startDate).getTime()) < state.date[0].startDate.getTime()
+            || (new Date(res.startDate).getTime()) > state.date[0].endDate.getTime())
+            && 
+            ((new Date(res.endDate).getTime()) < state.date[0].startDate.getTime()
+            || (new Date(res.endDate).getTime()) > state.date[0].endDate.getTime()))
+            ) == 0
+            )
+    
         return filtred;
-
     }
+
+       
+
+    
     return (
         <div>
-
-
-
             <MainNavbar />
             <p className="space"></p>
             <div className="back"> </div>
@@ -55,8 +80,8 @@ const List = () => {
             </div>
             <div className="listContainer">
                 <div className="listResult">
-                    {loading ? "loading" : <>
-                        {search(data).map(item => (
+                    {<>
+                        {Search(data).map(item => (
                             < SearchItem item={item} state={state} key={item.id} />
                         ))
                         }

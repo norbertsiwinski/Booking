@@ -72,7 +72,7 @@ const Header = () => {
 
     return (
         <div>
-            {console.log(accomodation)}
+
             <div className="containerSearch">
                 <div className="containerSearchItem">
                     <FontAwesomeIcon icon={faBed} className="cointainerIcon" />
@@ -128,9 +128,10 @@ const Header = () => {
                     }
                 </div>
                 <div className="containerSearchItem">
-
-                    <button onClick={() => { handleSearch() }} type="button" class="btn btn-primary">Search</button>
-
+                    <button
+                        onClick={() => { handleSearch() }}
+                        type="button"
+                        class="btn btn-primary">Search</button>
 
                 </div>
             </div>

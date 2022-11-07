@@ -1,10 +1,19 @@
 import React from "react";
 import "./SearchItem.css";
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+
 const picture1 = new URL("../featured/karpacz.jpg", import.meta.url);
-const SearchItem = (item, state) => {
-    console.log(item)
+const SearchItem = (item) => {
+
+    const navigate = useNavigate();
+    const handleSearch = () => {
+
+        navigate("/accomodation", { state: item });
+    };
+
     return (
         <div className="searchItem">
             <img
@@ -29,7 +38,10 @@ const SearchItem = (item, state) => {
                 <div className="siDetailText">
                     <span className="siPrice"> ${item.item.price * item.state.options.adult}</span>
                     <span className="siTaxOp">Includes taxes and fees</span>
-                    <button type="button" class="btn btn-primary avaible">See availbility</button>
+                    <button type="button" 
+                    class="btn btn-primary avaible"
+                    onClick={() => { handleSearch() }} 
+                    >See availbility</button>
 
                 </div>
             </div>

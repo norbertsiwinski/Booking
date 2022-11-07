@@ -70,7 +70,7 @@ namespace BookingApp.Services
 
             var acoomodation = GetById(id);
 
-           if (acoomodation.Reservations.Count == 0)
+           if (acoomodation == null)
             {
                 return null;
             }
