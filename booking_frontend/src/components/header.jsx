@@ -14,11 +14,11 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import { format } from "date-fns";
 import Form from 'react-bootstrap/Form';
 import { FormCheck } from 'react-bootstrap';
-
+import { useLocation } from 'react-router-dom';
 
 const Header = () => {
 
-
+    const { state } = useLocation();
     const [openDate, setOpenDate] = useState(false);
     const [date, setDate] = useState([
         {
@@ -70,24 +70,37 @@ const Header = () => {
         }
     )
 
+
+
     return (
         <div>
 
+
+            {console.log(state)}
             <div className="containerSearch">
                 <div className="containerSearchItem">
                     <FontAwesomeIcon icon={faBed} className="cointainerIcon" />
                     <input
                         id="destinaton"
                         type="text"
-                        placeholder="Where are you going?"
+                        placeholder={ "Where are you going?"}
                         className="containerSearchInput"
                         onChange={(e) => setDestination(e.target.value)}
                     />
                 </div>
                 <div className="containerSearchItem">
                     <FontAwesomeIcon icon={faCalendarDays} className="cointainerIcon" />
-                    <span onClick={() => setOpenDate(!openDate)} className="containerSearchText">{`${format(date[0].startDate, "MMM/dd/yyyy")} 
-                    to ${format(date[0].endDate, "MMM/dd/yyyy")}`}</span>
+                    <span onClick={() => setOpenDate(!openDate)}
+
+
+
+                        className="containerSearchText">
+
+
+
+                        {`${format( date[0].startDate, "MMM/dd/yyyy")}
+                        to ${format(date[0].endDate, "MMM/dd/yyyy")}`}
+                    </span>
                     {openDate && <DateRange
                         editableDateInputs={true}
                         onChange={item => setDate([item.selection])}
@@ -107,7 +120,7 @@ const Header = () => {
                                     disabled={options.adult <= 1}
                                     className="optionCounterButton"
                                     onClick={() => handleOption("adult", "d")}>-</button>
-                                <span className="optionNumber">{options.adult}</span>
+                                <span className="optionNumber">{ options.adult}</span>
                                 <button
                                     className="optionCounterButton"
                                     onClick={() => handleOption("adult", "i")}>+</button>

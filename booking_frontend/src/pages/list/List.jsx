@@ -65,7 +65,7 @@ const List = () => {
             <MainNavbar />
             <p className="space"></p>
             <div className="back"> </div>
-            <Header />
+            <Header state= {state}/>
             <div className="listSearch">
                 <div className="lsItem">
                     <input className="priceBox"
