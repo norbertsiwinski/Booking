@@ -16,10 +16,10 @@ const Home = () => {
         <div>
             <MainNavbar />
             <Image />
-            <Header />
+            <Header state = {state}/>
 
             <div className="homeContainer">
-                <Featured />
+                <Featured state = {state}/>
                 <h1 className="homeTitle">Search by property type</h1>
                 <PropertyList />
             </div>

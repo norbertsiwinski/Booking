@@ -60,10 +60,12 @@ const Hotel = () => {
 
     return (
         <div>
+            {console.log("state state hotel")}
+            {console.log(state.state)}
             <MainNavbar />
             <p className="space"></p>
             <div className="back"> </div>
-            <Header />
+            <Header state = {state.state} />
             <div className="hotelContainer">
                 <div className="hotelWrapper">
                     <button type="button" class="btn btn-primary reserve">Reserve or book now!</button>

@@ -83,7 +83,7 @@ const List = () => {
                 <div className="listResult">
                     {<>
                         {Search(data).map(item => (
-                            < SearchItem item={item} state={state} key={item.id} />
+                            < SearchItem state = {state} item ={item} key={item.id} />
                         ))
                         }
                     </>}

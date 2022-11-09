@@ -16,7 +16,7 @@ import Form from 'react-bootstrap/Form';
 import { FormCheck } from 'react-bootstrap';
 import { useLocation } from 'react-router-dom';
 
-const Header = () => {
+const Header = (dane) => {
 
     const { state } = useLocation();
     const [openDate, setOpenDate] = useState(false);
@@ -74,15 +74,15 @@ const Header = () => {
 
     return (
         <div>
-
-
+            {console.log("header")}
+            {console.log(dane.state)}
             <div className="containerSearch">
                 <div className="containerSearchItem">
                     <FontAwesomeIcon icon={faBed} className="cointainerIcon" />
                     <input
                         id="destinaton"
                         type="text"
-                        placeholder={ "Where are you going?"}
+                        placeholder={dane.state?.destination? dane.state.destination : "Where are you going?"}
                         className="containerSearchInput"
                         onChange={(e) => setDestination(e.target.value)}
                     />
@@ -97,8 +97,8 @@ const Header = () => {
 
 
 
-                        {`${format( date[0].startDate, "MMM/dd/yyyy")}
-                        to ${format(date[0].endDate, "MMM/dd/yyyy")}`}
+                        {`${format(dane.state?.date? dane.state.date[0].startDate : date[0].startDate, "MMM/dd/yyyy")}
+                        to ${format(dane.state?.date? dane.state.date[0].endDate : date[0].endDate, "MMM/dd/yyyy")}`}
                     </span>
                     {openDate && <DateRange
                         editableDateInputs={true}
@@ -119,7 +119,7 @@ const Header = () => {
                                     disabled={options.adult <= 1}
                                     className="optionCounterButton"
                                     onClick={() => handleOption("adult", "d")}>-</button>
-                                <span className="optionNumber">{ options.adult}</span>
+                                <span className="optionNumber">{options.adult}</span>
                                 <button
                                     className="optionCounterButton"
                                     onClick={() => handleOption("adult", "i")}>+</button>
