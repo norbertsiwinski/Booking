@@ -62,6 +62,7 @@ const List = () => {
     
     return (
         <div>
+            {console.log(state)}
             <MainNavbar />
             <p className="space"></p>
             <div className="back"> </div>

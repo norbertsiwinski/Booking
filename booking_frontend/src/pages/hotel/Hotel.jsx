@@ -11,7 +11,7 @@ import { addISOWeekYears } from "date-fns/esm";
 const picture1 = new URL("../../components/featured/karpacz.jpg", import.meta.url);
 
 
-const Hotel = (item) => {
+const Hotel = () => {
 
     const { state } = useLocation();
 

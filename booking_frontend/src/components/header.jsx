@@ -76,7 +76,6 @@ const Header = () => {
         <div>
 
 
-            {console.log(state)}
             <div className="containerSearch">
                 <div className="containerSearchItem">
                     <FontAwesomeIcon icon={faBed} className="cointainerIcon" />
