@@ -3,7 +3,7 @@
     max-width: 1024px;
     display: flex;
     justify-content: space-between;
-   
+
 }
 
 .pListItem {
@@ -20,7 +20,6 @@
     font-weight: 700;
 
 }
-
 
 .pListTitles>h2 {
 

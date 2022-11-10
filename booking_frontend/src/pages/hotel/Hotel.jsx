@@ -4,14 +4,24 @@ import Header from "../../components/header";
 import React from "react";
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from "react";
-import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark, faCircleArrowLeft, faCircleArrowRight, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from "axios";
 import { addISOWeekYears } from "date-fns/esm";
-const picture1 = new URL("../../components/featured/karpacz.jpg", import.meta.url);
 
+
+
+const picture1 = new URL("./images/11.jpg", import.meta.url);
+const picture2 = new URL("./images/22.jpg", import.meta.url);
+const picture3 = new URL("./images/88.jpg", import.meta.url);
+const picture4 = new URL("./images/44.jpg", import.meta.url);
+const picture5 = new URL("./images/33.jpg", import.meta.url);
+const picture6 = new URL("./images/99.jpg", import.meta.url);
 
 const Hotel = () => {
+
+    const [slideNumber, setSlideNumber] = useState(0);
+    const [open, setOpen] = useState(false);
 
     const { state } = useLocation();
 
@@ -20,19 +30,19 @@ const Hotel = () => {
             src: picture1
         },
         {
-            src: picture1
+            src: picture2
         },
         {
-            src: picture1
+            src: picture3
         },
         {
-            src: picture1
+            src: picture4
         },
         {
-            src: picture1
+            src: picture5
         },
         {
-            src: picture1
+            src: picture6
         }
     ];
 
@@ -56,17 +66,44 @@ const Hotel = () => {
                 alert(error.statusText)
             })
     }
+    const handleOpen = (i) => {
+
+        setSlideNumber(i);
+        setOpen(true);
+
+    }
+
+    const handleMove = (direction) => {
+        let newSlideNumber;
+
+        if (direction === "l") {
+            newSlideNumber = slideNumber === 0 ? 5 : slideNumber - 1
+        }
+        else {
+            newSlideNumber = slideNumber === 5 ? 0 : slideNumber + 1
+        }
+        setSlideNumber(newSlideNumber);
+    }
 
 
     return (
         <div>
-            {console.log("state state hotel")}
+
             {console.log(state.state)}
             <MainNavbar />
             <p className="space"></p>
             <div className="back"> </div>
-            <Header state = {state.state} />
+            <Header state={state.state} />
             <div className="hotelContainer">
+                {open && <div className="slider">
+                    <FontAwesomeIcon icon={faCircleXmark} className="close" onClick={() => setOpen(false)} />
+                    <FontAwesomeIcon icon={faCircleArrowLeft} className="arrow" onClick={() => handleMove("l")} />
+
+                    <div className="slideWrapper">
+                        <img src={photos[slideNumber].src} alt="" className="sliderImg" />
+                    </div>
+                    <FontAwesomeIcon icon={faCircleArrowRight} className="arrow" onClick={() => handleMove("l")} />
+                </div>}
                 <div className="hotelWrapper">
                     <button type="button" class="btn btn-primary reserve">Reserve or book now!</button>
                     <h1 className="hotelTitle"> {state.item.name}</h1>
@@ -80,10 +117,12 @@ const Hotel = () => {
                         Location - {state.item.distanceToCenter}m form center
                     </span>
                     <div className="hotelImages">
-                        {photos.map(photo =>
+                        {photos.map((photo, i) =>
                         (
                             <div className="hotelImgWrapper">
-                                <img src={photo.src} className="hotelImg" />
+                                <img
+                                    onClick={() => handleOpen(i)}
+                                    src={photo.src} className="hotelImg" />
                             </div>
                         ))}
                     </div>
