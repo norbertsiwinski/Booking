@@ -1,23 +1,4 @@
-.bigtext {
-    font-family: sans-serif;
-    position: absolute;
-    margin: auto;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 34px;
-    font-weight: 400;
-}
 
-.smalltext {
-    font-family: sans-serif;
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 25px;
-    font-weight: 330;
-}
 
 .containerSearch {
     height: 60px;

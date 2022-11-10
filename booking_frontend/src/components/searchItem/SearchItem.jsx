@@ -3,15 +3,21 @@ import "./SearchItem.css";
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from 'react';;
+import { useState } from 'react';
 
-const picture1 = new URL("../featured/karpacz.jpg", import.meta.url);
-const SearchItem = ({state, item}) => {
+const picture1 = [
+    new URL("../propertyList/image/hotel.jpg", import.meta.url),
+    new URL("../propertyList/image/chalets.jpg", import.meta.url),
+    new URL("../propertyList/image/homestay.jpg", import.meta.url),
+    new URL("../propertyList/image/apartament.jpg", import.meta.url),
+    new URL("../propertyList/image/hotel.jpg", import.meta.url)
+];
+const SearchItem = ({ state, item, index }) => {
 
     const navigate = useNavigate();
     const handleSearch = () => {
 
-        navigate("/accomodation", {state: dane});
+        navigate("/accomodation", { state: dane });
     };
 
     const [dane, setDane] = useState(
@@ -23,10 +29,9 @@ const SearchItem = ({state, item}) => {
     return (
 
         <div className="searchItem">
-             {console.log(state)}
-             {console.log(item)}
+            {console.log(index)}
             <img
-                src={picture1}
+                src={picture1[index]}
                 alt=""
                 className="siImg"
             />
@@ -34,7 +39,7 @@ const SearchItem = ({state, item}) => {
                 <h1 className="siTitle"> {item.name}</h1>
                 <span className="siDistance">
                     <FontAwesomeIcon icon={faLocationDot} className="location" />
-                    {item.city}, { item.distanceToCenter}m form center</span>
+                    {item.city}, {item.distanceToCenter}m form center</span>
                 <span className="siSubtitle">
                     {item.description}
                 </span>
@@ -47,9 +52,9 @@ const SearchItem = ({state, item}) => {
                 <div className="siDetailText">
                     <span className="siPrice"> ${item.price * state.options.adult}</span>
                     <span className="siTaxOp">Includes taxes and fees</span>
-                    <button type="button" 
-                    class="btn btn-primary avaible"
-                    onClick={() => { handleSearch() }} 
+                    <button type="button"
+                        class="btn btn-primary avaible"
+                        onClick={() => { handleSearch() }}
                     >See availbility</button>
 
                 </div>

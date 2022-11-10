@@ -9,6 +9,11 @@ import { text } from '@fortawesome/fontawesome-svg-core';
 import SearchItem from '../../components/searchItem/SearchItem';
 import { useEffect, useState } from "react"
 import axios from "axios";
+const image = [
+    new URL("../../components/featured/wisla.jpg", import.meta.url),
+    new URL("../../components/featured/karpacz.jpg", import.meta.url),
+]
+
 
 const List = () => {
 
@@ -28,7 +33,7 @@ const List = () => {
                     const res = await axios.get(url);
                     setData(res.data);
                 } catch (err) {
-    
+
                     setError(err);
                 }
             };
@@ -45,28 +50,28 @@ const List = () => {
         let filtred = data.filter((item) =>
             item.city.includes(state.destination) &&
             item.place >= state.options.adult &&
-            item.reservations.filter((res) => 
-            !(((new Date(res.startDate).getTime()) < state.date[0].startDate.getTime()
-            || (new Date(res.startDate).getTime()) > state.date[0].endDate.getTime())
-            && 
-            ((new Date(res.endDate).getTime()) < state.date[0].startDate.getTime()
-            || (new Date(res.endDate).getTime()) > state.date[0].endDate.getTime()))
+            item.reservations.filter((res) =>
+                !(((new Date(res.startDate).getTime()) < state.date[0].startDate.getTime()
+                    || (new Date(res.startDate).getTime()) > state.date[0].endDate.getTime())
+                    &&
+                    ((new Date(res.endDate).getTime()) < state.date[0].startDate.getTime()
+                        || (new Date(res.endDate).getTime()) > state.date[0].endDate.getTime()))
             ) == 0
-            )
-    
+        )
+
         return filtred;
     }
 
-       
 
-    
+
+
     return (
         <div>
-            {console.log(state)}
+            {console.log(data)}
             <MainNavbar />
             <p className="space"></p>
             <div className="back"> </div>
-            <Header state= {state}/>
+            <Header state={state} />
             <div className="listSearch">
                 <div className="lsItem">
                     <input className="priceBox"
@@ -82,8 +87,8 @@ const List = () => {
             <div className="listContainer">
                 <div className="listResult">
                     {<>
-                        {Search(data).map(item => (
-                            < SearchItem state = {state} item ={item} key={item.id} />
+                        {Search(data).map((item, index) => (
+                            < SearchItem state={state} item={item} index={index} />
                         ))
                         }
                     </>}

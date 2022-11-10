@@ -8,7 +8,7 @@ const Image = () => {
         <div class="picture-container">
             <div class="centered">
                 <div class="bigtext"> HOTELS, APARTMENTS, ROOMS AND MORE... </div>
-                <div class="smalltext"> Look for rooms from all over the world</div>
+                <div class="smalltext"> Look for rooms from all over the world and book them now!</div>
             </div>
             <img src={picture} />
         </div>
