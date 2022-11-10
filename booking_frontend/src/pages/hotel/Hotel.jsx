@@ -53,8 +53,11 @@ const Hotel = () => {
     }
 
     const handleReserve = () => {
+        { console.log("state") }
+        { console.log(state.item.id) }
         axios.post('http://localhost:5027/api/reservation/',
             {
+
                 accomodationId: state.item.id,
                 startDate: state.state.date[0].startDate,
                 endDate: state.state.date[0].endDate,
@@ -88,8 +91,10 @@ const Hotel = () => {
 
     return (
         <div>
-
-            {console.log(state.state)}
+            {console.log("hotel state:")}
+            {console.log(state.item.id)}
+            {console.log(state.state.date[0].startDate)}
+            {console.log(state.state.date[0].endDate)}
             <MainNavbar />
             <p className="space"></p>
             <div className="back"> </div>

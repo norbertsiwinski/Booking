@@ -30,7 +30,6 @@ const Header = (dane) => {
     const [destination, setDestination] = useState("");
     const [openOptions, setOpenOptions] = useState(false);
     const [openAccomodation, setOpenAccomodation] = useState(false);
-
     const [options, setOptions] = useState(
         {
             adult: 1
@@ -63,9 +62,9 @@ const Header = (dane) => {
 
     const [accomodation, setChecked] = useState(
         {
-            hotel: false,
-            apartament: false,
-            guesthouse: false
+            apartament: true,
+            hotel: true,
+            guesthouse: true,
 
         }
     )
@@ -74,7 +73,6 @@ const Header = (dane) => {
 
     return (
         <div>
-            {console.log("header")}
             {console.log(dane.state)}
             <div className="containerSearch">
                 <div className="containerSearchItem">
@@ -82,7 +80,7 @@ const Header = (dane) => {
                     <input
                         id="destinaton"
                         type="text"
-                        placeholder={dane.state?.destination? dane.state.destination : "Where are you going?"}
+                        placeholder={dane.state?.destination ? dane.state.destination : "Where are you going?"}
                         className="containerSearchInput"
                         onChange={(e) => setDestination(e.target.value)}
                     />
@@ -97,8 +95,8 @@ const Header = (dane) => {
 
 
 
-                        {`${format(dane.state?.date? dane.state.date[0].startDate : date[0].startDate, "MMM/dd/yyyy")}
-                        to ${format(dane.state?.date? dane.state.date[0].endDate : date[0].endDate, "MMM/dd/yyyy")}`}
+                        {`${format(dane.state?.date ? dane.state.date[0].startDate : date[0].startDate, "MMM/dd/yyyy")}
+                        to ${format(dane.state?.date ? dane.state.date[0].endDate : date[0].endDate, "MMM/dd/yyyy")}`}
                     </span>
                     {openDate && <DateRange
                         editableDateInputs={true}
@@ -110,7 +108,7 @@ const Header = (dane) => {
                 </div>
                 <div className="containerSearchItem">
                     <FontAwesomeIcon icon={faPerson} className="cointainerIcon" />
-                    <span onClick={() => setOpenOptions(!openOptions)} className="containerSearchText">{`${(options.adult)} person`} </span>
+                    <span onClick={() => setOpenOptions(!openOptions)} className="containerSearchText">{`${(dane.state?.options ? dane.state.options.adult : options.adult)}`}  </span>
                     {openOptions && <div className="options">
                         <div className="optionItem">
                             <span className="optionText">Adult</span>
@@ -132,9 +130,9 @@ const Header = (dane) => {
                     <FontAwesomeIcon icon={faHotel} className="cointainerIcon" />
                     <span onClick={() => setOpenAccomodation(!openAccomodation)} className="containerSearchText">Accomodation Type</span>
                     {openAccomodation && <div className='checkboxes'>
-                        <FormCheck className="checkbox" id="flexCheckDefault" label="Hotel" onChange={() => handleChange("hotel")} value={accomodation.hotel} />
-                        <FormCheck className="checkbox" id="checkbox" label="Apartament" onChange={() => handleChange("apartament")} value={accomodation.apartament} />
-                        <FormCheck className="checkbox" id="checkbox" label="Guest House" onChange={() => handleChange("guesthouse")} value={accomodation.guesthouse} />
+                        <FormCheck className="checkbox" id="flexCheckDefault" label="Apartament" onChange={() => handleChange("apartament")} value={accomodation.apartament} checked={accomodation.apartament} />
+                        <FormCheck className="checkbox" id="checkbox" label="Hotel" onChange={() => handleChange("hotel")} value={accomodation.hotel} checked={accomodation.hotel} />
+                        <FormCheck className="checkbox" id="checkbox" label="Guest House" onChange={() => handleChange("guesthouse")} value={accomodation.guesthouse} checked={accomodation.guesthouse} />
 
                     </div>
                     }

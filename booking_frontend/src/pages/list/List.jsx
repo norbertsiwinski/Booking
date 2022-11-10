@@ -22,8 +22,8 @@ const List = () => {
     const [date, setDate] = useState(state.date);
     // const [options, setOptions] = useState(state.options)
     // const [accomodation, setAccomodation] = useState(state.accomodation)
-
-
+    const [maxPrice, setMaxPrice] = useState("");
+    const [minPrice, setMinPrice] = useState("");
     const useFetched = url => {
         const [dates, setData] = useState([]);
         const [error, setError] = useState(false);
@@ -49,7 +49,23 @@ const List = () => {
     const Search = (data) => {
         let filtred = data.filter((item) =>
             item.city.includes(state.destination) &&
-            item.place >= state.options.adult &&
+            (
+                (item.accomodationType == 1 && state.accomodation.apartament)
+                ||
+                (item.accomodationType == 2 && state.accomodation.hotel)
+                ||
+                (item.accomodationType == 3 && state.accomodation.guesthouse))
+            &&
+            item.place >= state.options.adult
+            &&
+            (
+                ((maxPrice == "") || parseInt(maxPrice) >= parseInt(item.price) * state.options.adult)
+                &&
+
+                ((minPrice == "") || parseInt(minPrice) <= parseInt(item.price) * state.options.adult)
+            )
+            
+            &&
             item.reservations.filter((res) =>
                 !(((new Date(res.startDate).getTime()) < state.date[0].startDate.getTime()
                     || (new Date(res.startDate).getTime()) > state.date[0].endDate.getTime())
@@ -67,7 +83,7 @@ const List = () => {
 
     return (
         <div>
-            {console.log(data)}
+            {console.log(date)}
             <MainNavbar />
             <p className="space"></p>
             <div className="back"> </div>
@@ -75,13 +91,18 @@ const List = () => {
             <div className="listSearch">
                 <div className="lsItem">
                     <input className="priceBox"
-                        placeholder=" Min price           zł"
-                        type="text"></input>
+                        id={minPrice}
+                        placeholder={minPrice ? minPrice : "Min price          zł"}
+                        onChange={(e) => setMinPrice(e.target.value)}>
+                    </input>
                 </div>
                 <div className="lsItem">
                     <input className="priceBox"
-                        placeholder=" Max price          zł"
-                        type="text"></input>
+                        id={maxPrice}
+                        placeholder={maxPrice ? maxPrice : "Max price          zł"}
+                        type="text"
+                        onChange={(e) => setMaxPrice(e.target.value)}>
+                    </input>
                 </div>
             </div>
             <div className="listContainer">
