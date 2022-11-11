@@ -10,7 +10,8 @@ namespace BookingApp.Entities
         public DbSet<Accomodation> Accomodations { get; set; }
         public DbSet<Address> Address { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
-
+        public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -22,6 +23,15 @@ namespace BookingApp.Entities
             modelBuilder.Entity<Accomodation>()
                 .Property(p => p.Price)
                 .HasColumnType("decimal(18,2)");
+
+            modelBuilder.Entity<User>()
+                .Property(r => r.Email)
+                .IsRequired();
+
+
+            modelBuilder.Entity<Role>()
+                .Property(r => r.Name)
+                .IsRequired();
 
         }
 
