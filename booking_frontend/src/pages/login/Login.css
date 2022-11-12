@@ -1,0 +1,37 @@
+.app-logo {
+    width: 40px;
+    height: 40px;
+}
+
+#sign-in-form2 {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 400px;
+    max-height: 400px;
+    background-color: rgba(0, 0, 0, 0.699);
+}
+
+.form-control:focus {
+    z-index: 5;
+}
+
+.label {
+    color: white;
+}
+
+.buttonLogink {
+    border: 0;
+    border-radius: 15px;
+    margin-left: 95px;
+}
+
+.buttonLogink:hover {
+    background-color: rgb(161, 118, 7);
+}
+
+#root{
+    background-color: white;
+}
+

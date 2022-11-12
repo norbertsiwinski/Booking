@@ -1,5 +1,6 @@
 global using BookingApp.Entities;
 using BookingApp;
+using BookingApp.Middleware;
 using BookingApp.Models;
 using BookingApp.Models.Validators;
 using BookingApp.Services;
@@ -17,8 +18,7 @@ var authenticationSettings = new AuthenticationSettings();
 builder.Configuration.GetSection("Authentication").Bind(authenticationSettings);
 builder.Services.AddSingleton(authenticationSettings);
 builder.Services.AddAuthentication(option =>
-{
-
+{ 
     option.DefaultAuthenticateScheme = "Bearer";
     option.DefaultScheme = "Bearer";
     option.DefaultChallengeScheme = "Bearer";
@@ -44,6 +44,7 @@ builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddCors();
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 builder.Services.AddScoped<IValidator<RegisterUserDto>, RegisterUserDtoValidator>();
+builder.Services.AddScoped<ErrorHandlingMiddleware>();
 
 
 
@@ -53,12 +54,12 @@ app.UseCors(builder => builder
     .AllowAnyMethod()
     .AllowAnyHeader());
 
-
-app.MapGet("/", () => "Hello World!");
-// Configure the HTTP request pipeline.
+app.UseMiddleware<ErrorHandlingMiddleware>();
 app.UseAuthentication();
 app.UseHttpsRedirection();
-
+app.UseRouting();
+// Configure the HTTP request pipeline.
+app.UseAuthorization();
 app.MapControllers();
 
 app.Run();

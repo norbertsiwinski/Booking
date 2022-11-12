@@ -53,20 +53,23 @@ const Hotel = () => {
     }
 
     const handleReserve = () => {
-        { console.log("state") }
-        { console.log(state.item.id) }
+
         axios.post('http://localhost:5027/api/reservation/',
             {
-
                 accomodationId: state.item.id,
                 startDate: state.state.date[0].startDate,
                 endDate: state.state.date[0].endDate,
+            },
+            {
+                headers: {
+                    'Authorization': "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjUiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiIDAiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJVc2VyIiwiZXhwIjoxNjY5NTQ4NTYxLCJpc3MiOiJodHRwOi8vYm9va2luZ2FwaS5jb20iLCJhdWQiOiJodHRwOi8vYm9va2luZ2FwaS5jb20ifQ.fdY7vlUF3MI75OKqJ35-eE14ZVQ3Xj5w_ij_PUlx9FI"
+                }
             })
             .then(response => {
                 alert(response.statusText)
             })
             .catch(error => {
-                alert(error.statusText)
+                alert("Register your account to make reservation!")
             })
     }
     const handleOpen = (i) => {

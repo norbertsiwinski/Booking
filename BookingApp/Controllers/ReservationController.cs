@@ -5,7 +5,7 @@ using BookingApp.Models;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using BookingApp.Services;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookingApp.Controllers
 {
@@ -31,6 +31,7 @@ namespace BookingApp.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult CreateReservation([FromBody] CreateReservationDto dto)
         {
             var id = _reservationService.CreateReservation(dto);

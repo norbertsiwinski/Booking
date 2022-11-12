@@ -1,0 +1,77 @@
+.app-logo {
+    width: 40px;
+    height: 40px;
+}
+
+#sign-in-form {
+
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.6799);
+}
+
+#sign-in-form {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    max-width: 400px;
+    max-height: 450px;
+    background-color: rgba(0, 0, 0, 0.699);
+}
+
+#role {
+    color: #e6e6e6;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+#username {
+    color: #e6e6e6;
+    background-color: transparent;
+}
+
+#email {
+    color: #e6e6e6;
+    background-color: transparent;
+}
+
+#password {
+    color: #e6e6e6;
+    background-color: transparent;
+}
+
+.form-control:focus {
+    z-index: 5;
+}
+
+.position-relative {
+    background-color: transparent;
+}
+
+.position-relative:hover {
+    background-color: transparent;
+}
+
+.position-relative::selection {
+    background-color: transparent;
+}
+
+
+.mb-3 {
+    background-color: transparent;
+}
+
+.label {
+    color: #e6e6e6;
+}
+
+.buttonLogin {
+    border: 0;
+    border-radius: 15px;
+    margin-left: 90px;
+
+}
+
+.buttonLogin:hover {
+    background-color: rgb(161, 118, 7);
+}

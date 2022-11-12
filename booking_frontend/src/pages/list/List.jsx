@@ -61,17 +61,22 @@ const List = () => {
             (
                 ((maxPrice == "") || parseInt(maxPrice) >= parseInt(item.price) * state.options.adult)
                 &&
-
                 ((minPrice == "") || parseInt(minPrice) <= parseInt(item.price) * state.options.adult)
             )
-            
+
             &&
             item.reservations.filter((res) =>
-                !(((new Date(res.startDate).getTime()) < state.date[0].startDate.getTime()
-                    || (new Date(res.startDate).getTime()) > state.date[0].endDate.getTime())
+                !(
+                    ((new Date(res.startDate).getTime()) < state.date[0].startDate.getTime()
+                        || (new Date(res.startDate).getTime()) > state.date[0].endDate.getTime())
                     &&
                     ((new Date(res.endDate).getTime()) < state.date[0].startDate.getTime()
-                        || (new Date(res.endDate).getTime()) > state.date[0].endDate.getTime()))
+                        || (new Date(res.endDate).getTime()) > state.date[0].endDate.getTime())
+                    &&
+                    !((new Date(res.endDate).getTime()) <= state.date[0].startDate.getTime()
+                        && (new Date(res.endDate).getTime()) >= state.date[0].endDate.getTime())
+                )
+
             ) == 0
         )
 
