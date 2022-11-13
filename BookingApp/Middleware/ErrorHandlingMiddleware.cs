@@ -23,10 +23,10 @@ namespace BookingApp.Middleware
                 context.Response.StatusCode = 404;
                 await context.Response.WriteAsync(bad.Message);
             }
-            catch (Exception) 
+            catch (Exception b) 
             {  
                 context.Response.StatusCode = 500;
-                await context.Response.WriteAsync("Something went wrong");
+                await context.Response.WriteAsync(b.Message);
             }
         }
     }
