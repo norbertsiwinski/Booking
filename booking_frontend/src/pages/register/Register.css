@@ -16,13 +16,13 @@
     transform: translate(-50%, -50%);
 
     max-width: 400px;
-    max-height: 450px;
+    max-height: 550px;
     background-color: rgba(0, 0, 0, 0.699);
 }
 
 #role {
     color: #e6e6e6;
-    background-color: rgba(0, 0, 0, 0);
+    background-color:transparent;
 }
 
 #username {
@@ -34,6 +34,11 @@
     color: #e6e6e6;
     background-color: transparent;
 }
+#nationality {
+    color: #e6e6e6;
+    background-color: transparent;
+}
+
 
 #password {
     color: #e6e6e6;

@@ -1,6 +1,6 @@
 import React from 'react';
 import MainNavbar from '../../components/MainNavbar'
-import './Home.css';
+import './AddHotel.css';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import Header from '../../components/header';
@@ -10,25 +10,13 @@ import Featured from '../../components/featured';
 import LoggedNavbar from '../../components/LoggedNavbar/loggedNavbar';
 import { getItemFromLocalStorage } from '../../helpers/localstorage';
 import PropertyList from '../../components/propertyList/propertyList';
-const Home = () => {
 
-    const { state } = useLocation();
+
+const AddHotel = () => {
 
     return (
-        <div>
-            {
-                getItemFromLocalStorage("authenticationToken") ? <LoggedNavbar /> : <MainNavbar />
-            }
-            <Image />
-            <Header state={state} />
-
-            <div className="homeContainer">
-                <Featured state={state} />
-                <h1 className="homeTitle">Search by property type</h1>
-                <PropertyList />
-            </div>
-        </div >
+        <div>addhotel</div>
     )
 }
 
-export default Home
+export default AddHotel

@@ -88,13 +88,7 @@ const Header = (dane) => {
                 <div className="containerSearchItem">
                     <FontAwesomeIcon icon={faCalendarDays} className="cointainerIcon" />
                     <span onClick={() => setOpenDate(!openDate)}
-
-
-
                         className="containerSearchText">
-
-
-
                         {`${format(dane.state?.date ? dane.state.date[0].startDate : date[0].startDate, "MMM/dd/yyyy")}
                         to ${format(dane.state?.date ? dane.state.date[0].endDate : date[0].endDate, "MMM/dd/yyyy")}`}
                     </span>

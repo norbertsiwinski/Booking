@@ -51,8 +51,6 @@ const Featured = (status) => {
 
     return (
         <div className="featured">
-            {console.log("featured")}
-            {console.log(status)}
             {loading ? ("Loading please wait"
             ) : (
                 <>

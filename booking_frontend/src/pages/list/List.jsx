@@ -8,7 +8,11 @@ import Header from '../../components/header';
 import { text } from '@fortawesome/fontawesome-svg-core';
 import SearchItem from '../../components/searchItem/SearchItem';
 import { useEffect, useState } from "react"
+import LoggedNavbar from '../../components/LoggedNavbar/loggedNavbar';
+import { getItemFromLocalStorage } from '../../helpers/localstorage';
 import axios from "axios";
+
+
 const image = [
     new URL("../../components/featured/wisla.jpg", import.meta.url),
     new URL("../../components/featured/karpacz.jpg", import.meta.url),
@@ -87,9 +91,12 @@ const List = () => {
 
 
     return (
+
         <div>
-            {console.log(date)}
-            <MainNavbar />
+            {
+                getItemFromLocalStorage("authenticationToken")? <LoggedNavbar/> : <MainNavbar/>
+            }
+
             <p className="space"></p>
             <div className="back"> </div>
             <Header state={state} />

@@ -8,8 +8,9 @@ import { faCircleXmark, faCircleArrowLeft, faCircleArrowRight, faLocationDot } f
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from "axios";
 import { addISOWeekYears } from "date-fns/esm";
-
-
+import { getItemFromLocalStorage } from "../../helpers/localstorage";
+import LoggedNavbar from "../../components/LoggedNavbar/loggedNavbar";
+import { useNavigate } from "react-router-dom";
 
 const picture1 = new URL("./images/11.jpg", import.meta.url);
 const picture2 = new URL("./images/22.jpg", import.meta.url);
@@ -22,6 +23,11 @@ const Hotel = () => {
 
     const [slideNumber, setSlideNumber] = useState(0);
     const [open, setOpen] = useState(false);
+    const navigate = useNavigate();
+    const goLogin = () => {
+        navigate("/login");
+    };
+
 
     const { state } = useLocation();
 
@@ -62,14 +68,15 @@ const Hotel = () => {
             },
             {
                 headers: {
-                    'Authorization': "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjUiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiIDAiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJVc2VyIiwiZXhwIjoxNjY5NTQ4NTYxLCJpc3MiOiJodHRwOi8vYm9va2luZ2FwaS5jb20iLCJhdWQiOiJodHRwOi8vYm9va2luZ2FwaS5jb20ifQ.fdY7vlUF3MI75OKqJ35-eE14ZVQ3Xj5w_ij_PUlx9FI"
+                    'Authorization': `Bearer ${getItemFromLocalStorage("authenticationToken")}`
                 }
             })
             .then(response => {
                 alert(response.statusText)
             })
             .catch(error => {
-                alert("Register your account to make reservation!")
+                alert("Register your account to make reservation!");
+                goLogin();
             })
     }
     const handleOpen = (i) => {
@@ -94,11 +101,9 @@ const Hotel = () => {
 
     return (
         <div>
-            {console.log("hotel state:")}
-            {console.log(state.item.id)}
-            {console.log(state.state.date[0].startDate)}
-            {console.log(state.state.date[0].endDate)}
-            <MainNavbar />
+            {
+                getItemFromLocalStorage("authenticationToken") ? <LoggedNavbar /> : <MainNavbar />
+            }
             <p className="space"></p>
             <div className="back"> </div>
             <Header state={state.state} />
