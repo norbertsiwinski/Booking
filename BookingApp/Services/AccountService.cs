@@ -64,7 +64,6 @@ namespace BookingApp.Services
 
             var claims = new List<Claim>
             {
-
                 new Claim("id", user.Id.ToString()),
                 new Claim("name", $"{user.FirstName} "),
                 new Claim("role", $"{user.Role.Name}"),

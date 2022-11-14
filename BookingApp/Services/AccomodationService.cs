@@ -79,5 +79,13 @@ namespace BookingApp.Services
 
             return result;
         }
+
+        public int CreateAccomodation(CreateAccomodationDto dto)
+        {
+            var accoomodation = _mapper.Map<Accomodation>(dto);
+            _dbContext.Accomodations.Add(accoomodation);
+            _dbContext.SaveChanges();
+            return accoomodation.Id;
+        }
     }
 }

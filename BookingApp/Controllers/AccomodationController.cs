@@ -65,5 +65,16 @@ namespace BookingApp.Controllers
             }
             return accomodation;
         }
+
+        [HttpPost]
+        public ActionResult CreateAccomodation([FromBody] CreateAccomodationDto dto) 
+        {
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var id = _accomodationService.CreateAccomodation(dto);
+            return Created($"/api/accomodation/{id}", null);
+        }
     }
 }

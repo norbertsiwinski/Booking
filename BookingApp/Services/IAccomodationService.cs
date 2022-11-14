@@ -10,5 +10,7 @@ namespace BookingApp.Services
         AccomodationDto GetByName(string name);
 
         Object GetReservationsDates(int id);
+
+        int CreateAccomodation(CreateAccomodationDto dto);
     }
 }

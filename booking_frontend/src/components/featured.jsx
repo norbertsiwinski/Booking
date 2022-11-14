@@ -34,9 +34,9 @@ const Featured = (status) => {
 
     const [accomodation, setChecked] = useState(
         {
-            hotel: false,
-            apartament: false,
-            guesthouse: false
+            hotel: true,
+            apartament: true,
+            guesthouse: true
 
         }
     )
