@@ -9,6 +9,7 @@ namespace BookingApp.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+           
             migrationBuilder.CreateTable(
                 name: "Address",
                 columns: table => new
@@ -81,6 +82,7 @@ namespace BookingApp.Migrations
                 name: "IX_Reservations_AccomodationId",
                 table: "Reservations",
                 column: "AccomodationId");
+           
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

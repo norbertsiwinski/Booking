@@ -35,9 +35,10 @@ namespace BookingApp.Services
 
         }
 
-        public int CreateReservation(CreateReservationDto dto)
+        public int CreateReservation(CreateReservationDto dto, int userId)
         {
             var reservation = _mapper.Map<Reservation>(dto);
+            reservation.CreatedById = userId;
             _dbContext.Reservations.Add(reservation);
             _dbContext.SaveChanges();
             return reservation.Id;

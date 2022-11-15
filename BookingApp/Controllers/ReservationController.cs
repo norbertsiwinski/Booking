@@ -6,6 +6,7 @@ using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using BookingApp.Services;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace BookingApp.Controllers
 {
@@ -34,7 +35,8 @@ namespace BookingApp.Controllers
         [Authorize]
         public ActionResult CreateReservation([FromBody] CreateReservationDto dto)
         {
-            var id = _reservationService.CreateReservation(dto);
+            var userId =int.Parse(User.FindFirst(c => c.Type == "id").Value);
+            var id = _reservationService.CreateReservation(dto, userId);
             return Created($"/api/reservation/{id}", null);
         }
 
