@@ -6,6 +6,7 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import LoggedNavbar from '../../components/LoggedNavbar/loggedNavbar';
 import { getItemFromLocalStorage } from '../../helpers/localstorage';
 import axios from "axios";
+const picture1 = new URL("../../components/propertyList/image/wide.jpg", import.meta.url);
 
 const AddHotel = () => {
 
@@ -15,10 +16,10 @@ const AddHotel = () => {
         let type;
         var ele = document.getElementsByName('rad');
         for (let i = 0; i < ele.length; i++) {
-      
+
             if (ele[i].checked) {
                 name = ele[i].value;
-              
+
             }
         }
 
@@ -73,7 +74,12 @@ const AddHotel = () => {
             <div class="testbox">
                 <form>
                     <div class="banner">
-                        <h1>Donation Form</h1>
+                        <img
+                            src={picture1}
+                            alt=""
+                            className="Img"
+                        />
+        
                     </div>
                     <br />
                     <fieldset>
