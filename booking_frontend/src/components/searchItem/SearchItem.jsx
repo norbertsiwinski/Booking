@@ -27,7 +27,6 @@ const SearchItem = ({ state, item, index }) => {
         });
 
     return (
-
         <div className="searchItem">
             <img
                 src={picture1[index]}

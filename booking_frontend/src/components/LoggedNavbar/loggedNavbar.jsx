@@ -32,7 +32,7 @@ const LoggedNavbar = () => {
                         <li>
                         <Link to="/addhotel" class="btn btn-light add" >Add property</Link>
                     </li>
-                        : null
+                        : <Link to="/reservations" class="btn btn-light add" >My reservations</Link>
                     }
                     <li>
                         <a className="nav-link text-dark" href="#"></a>

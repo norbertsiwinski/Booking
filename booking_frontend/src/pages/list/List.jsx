@@ -94,7 +94,7 @@ const List = () => {
 
         <div>
             {
-                getItemFromLocalStorage("authenticationToken")? <LoggedNavbar/> : <MainNavbar/>
+                getItemFromLocalStorage("authenticationToken") ? <LoggedNavbar /> : <MainNavbar />
             }
 
             <p className="space"></p>

@@ -22,14 +22,33 @@ namespace BookingApp.Controllers
         }
 
 
-        [HttpGet("id/{id}")]
-        public ActionResult<IEnumerable<ReservationDto>> GetById([FromRoute] int id)
+        [HttpGet("userId/{id}")]
+        public ActionResult<IEnumerable<ReservationDto>> GetByUserId([FromRoute] int id)
        
+        {
+            var reservationDtos = _reservationService.GetByUserId(id);
+
+            return Ok(reservationDtos);
+        }
+
+        [HttpGet("user/{id}")]
+        public ActionResult<ReservationDto> GetById([FromRoute] int id)
+
         {
             var reservationDtos = _reservationService.GetById(id);
 
             return Ok(reservationDtos);
         }
+
+
+        [HttpDelete("{id}")]
+        public ActionResult DeleteReservation([FromRoute] int id)
+
+        {
+            _reservationService.DeleteReservation(id);
+            return NoContent();
+        }
+
 
         [HttpPost]
         [Authorize]

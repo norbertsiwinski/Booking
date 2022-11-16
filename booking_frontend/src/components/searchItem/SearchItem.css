@@ -78,6 +78,10 @@
 
 }
 
+.btn.btn-light.rate {
+    max-width: 50px;
+}
+
 .siDetailText {
     text-align: right;
     display: flex;
@@ -101,6 +105,6 @@
     margin-left: 7px;
     margin-top: -5px;
     margin-right: -2px;
-    
+
 
 }

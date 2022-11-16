@@ -43,6 +43,33 @@ namespace BookingApp.Services
             _dbContext.SaveChanges();
             return reservation.Id;
         }
+        public void DeleteReservation(int id)
+        {
+            var reservation = _dbContext
+                .Reservations
+                .FirstOrDefault(r => r.Id == id);
+
+            _dbContext.Reservations.Remove(reservation);
+            _dbContext.SaveChanges();
+        }
+
+        public IEnumerable<ReservationDto> GetByUserId(int id)
+        {
+
+            //var reservation = _dbContext.Reservations.FirstOrDefault(r => r.CreatedById == id);
+
+            var reservation = _dbContext.Reservations.Where(r => r.CreatedById == id).ToList();
+
+            if (reservation is null)
+            {
+                return null;
+            }
+
+            var result = _mapper.Map<List<ReservationDto>>(reservation);
+            return result;
+
+        }
+
 
     }
 }

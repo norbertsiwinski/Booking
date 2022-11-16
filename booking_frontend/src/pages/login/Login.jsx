@@ -23,6 +23,7 @@ const Login = () => {
             .then((res) => {
                 console.log(res)
                 setItemToLocalStorage("authenticationToken", res.data)
+                setItemToLocalStorage("id", jwt_decode(res.data).id)
                 setItemToLocalStorage("name", jwt_decode(res.data).name)
                 setItemToLocalStorage("role", jwt_decode(res.data).role)
                 nav("/")

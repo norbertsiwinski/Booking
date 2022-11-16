@@ -1,5 +1,4 @@
 export function getItemFromLocalStorage(type) {
-    console.log(localStorage.getItem(type));
         return localStorage.getItem(type)
 }
 

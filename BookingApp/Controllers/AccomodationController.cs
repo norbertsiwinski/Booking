@@ -13,7 +13,6 @@ namespace BookingApp.Controllers
     {
         private readonly IAccomodationService _accomodationService;
 
-
         public AccomodationController(IAccomodationService accomodationService)
         {
             _accomodationService = accomodationService;

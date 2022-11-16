@@ -73,7 +73,6 @@ const Header = (dane) => {
 
     return (
         <div>
-            {console.log(dane.state)}
             <div className="containerSearch">
                 <div className="containerSearchItem">
                     <FontAwesomeIcon icon={faBed} className="cointainerIcon" />

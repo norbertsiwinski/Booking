@@ -12,6 +12,7 @@ import Hotel from './pages/hotel/Hotel';
 import Login from './pages/login/Login';
 import AddHotel from './pages/addHotel/AddHotel';
 import Register from './pages/register/Register';
+import Reservations from './pages/reservations/Reservations';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Route path="/accomodations" element={<List />} />
         <Route path="/accomodation" element={<Hotel />} />
         <Route path="/addhotel" element={<AddHotel />} />
+        <Route path="/reservations" element={<Reservations />} />
       </Routes>
     </BrowserRouter>
   );
