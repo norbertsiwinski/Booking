@@ -55,6 +55,15 @@ const ReservationItem = ({ item, index }) => {
             />
             <div className="siDesc">
                 <h1 className="siTitle"> {data.name}</h1>
+                <div className="res">
+
+                    <FontAwesomeIcon icon={faLocationDot} className="locatlion" />
+
+                     {    } {data.street}, {data.postalCode} {data.city}
+
+                </div>
+
+
 
                 <span className="siSubtitle">
                     <h1>Reservation data:</h1>

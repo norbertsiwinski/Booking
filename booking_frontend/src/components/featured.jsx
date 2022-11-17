@@ -36,8 +36,9 @@ const Featured = (status) => {
         {
             hotel: true,
             apartament: true,
-            guesthouse: true
-
+            guesthouse: true,
+            homestay: true,
+            chalet: true,
         }
     )
 

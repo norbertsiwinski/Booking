@@ -58,13 +58,19 @@ const Hotel = () => {
         return diffDays;
     }
 
+    function addHours(date, hours) {
+        date.setHours(date.getHours() + hours);
+      
+        return date;
+      }
+
     const handleReserve = () => {
 
         axios.post('http://localhost:5027/api/reservation/',
             {
                 accomodationId: state.item.id,
-                startDate: state.state.date[0].startDate,
-                endDate: state.state.date[0].endDate,
+                startDate: addHours(state.state.date[0].startDate, 1),
+                endDate:  addHours(state.state.date[0].endDate, 1),
             },
             {
                 headers: {

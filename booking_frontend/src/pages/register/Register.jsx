@@ -23,7 +23,7 @@ const Register = () => {
       }
     })
       .then((res) => {
-        alert("Confirm your token!")
+        alert("User registred sucessfully!")
         nav("/login")
       })
       .catch((err) => alert(err.response.data))

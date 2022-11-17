@@ -62,10 +62,11 @@ const Header = (dane) => {
 
     const [accomodation, setChecked] = useState(
         {
-            apartament: true,
             hotel: true,
+            apartament: true,
             guesthouse: true,
-
+            homestay: true,
+            chalet: true,
         }
     )
 
@@ -126,7 +127,8 @@ const Header = (dane) => {
                         <FormCheck className="checkbox" id="flexCheckDefault" label="Apartament" onChange={() => handleChange("apartament")} value={accomodation.apartament} checked={accomodation.apartament} />
                         <FormCheck className="checkbox" id="checkbox" label="Hotel" onChange={() => handleChange("hotel")} value={accomodation.hotel} checked={accomodation.hotel} />
                         <FormCheck className="checkbox" id="checkbox" label="Guest House" onChange={() => handleChange("guesthouse")} value={accomodation.guesthouse} checked={accomodation.guesthouse} />
-
+                        <FormCheck className="checkbox" id="checkbox" label="Homestay" onChange={() => handleChange("homestay")} value={accomodation.homestay} checked={accomodation.homestay} />
+                        <FormCheck className="checkbox" id="checkbox" label="Chalet" onChange={() => handleChange("chalet")} value={accomodation.chalet} checked={accomodation.chalet} />
                     </div>
                     }
                 </div>

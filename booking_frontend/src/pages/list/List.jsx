@@ -58,7 +58,11 @@ const List = () => {
                 ||
                 (item.accomodationType == 2 && state.accomodation.hotel)
                 ||
-                (item.accomodationType == 3 && state.accomodation.guesthouse))
+                (item.accomodationType == 3 && state.accomodation.guesthouse)
+                ||
+                (item.accomodationType == 4 && state.accomodation.homestay)
+                ||
+                (item.accomodationType == 5 && state.accomodation.chalet))
             &&
             item.place >= state.options.adult
             &&
@@ -86,8 +90,6 @@ const List = () => {
 
         return filtred;
     }
-
-
 
 
     return (
